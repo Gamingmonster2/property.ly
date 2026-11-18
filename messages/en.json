@@ -1,0 +1,153 @@
+{
+  "common": {
+    "appName": "Property.ly",
+    "tagline": "Your property gateway",
+    "language": "العربية",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "perMonth": "/ month",
+    "currencyDisclaimer": "Indicative rates, updated daily"
+  },
+  "nav": {
+    "home": "Home",
+    "buy": "For Sale",
+    "rent": "For Rent",
+    "marketStats": "Market Stats",
+    "currency": "Exchange Rates",
+    "agents": "Agents",
+    "addListing": "List your property — free",
+    "login": "Sign in"
+  },
+  "hero": {
+    "badge": "Arabic property platform · Bilingual",
+    "titleStart": "Your gateway to",
+    "rotateWords": ["your dream home", "a smart investment", "the opportunity of a lifetime"],
+    "subtitle": "An all-in-one property platform starting from Libya and spanning the Middle East — find your next property or list yours for free in minutes.",
+    "searchPlaceholder": "Search by city, district, or property type…",
+    "city": "City",
+    "allCities": "All cities",
+    "type": "Property type",
+    "allTypes": "All types",
+    "typeApartment": "Apartment",
+    "typeVilla": "Villa",
+    "typeLand": "Land",
+    "typeOffice": "Office",
+    "typeShop": "Retail",
+    "purpose": "Purpose",
+    "sale": "Sale",
+    "rent": "Rent",
+    "any": "Any",
+    "search": "Search",
+    "popular": "Popular:",
+    "popularTags": ["Tripoli", "Villa", "Apartment", "Benghazi", "Dubai", "Cairo"]
+  },
+  "stats": {
+    "listings": "Properties listed",
+    "cities": "Cities",
+    "countries": "Countries",
+    "visitors": "Monthly searchers"
+  },
+  "cities": {
+    "title": "Explore cities",
+    "subtitle": "From the heart of Tripoli to Dubai's towers — browse properties across the region's key markets",
+    "listingsCount": "{count} listings",
+    "names": {
+      "tripoli": "Tripoli",
+      "benghazi": "Benghazi",
+      "misrata": "Misrata",
+      "cairo": "Cairo",
+      "dubai": "Dubai",
+      "tunis": "Tunis",
+      "casablanca": "Casablanca",
+      "riyadh": "Riyadh"
+    }
+  },
+  "featured": {
+    "title": "Featured properties",
+    "subtitle": "Hand-picked from the latest listings on the platform",
+    "saleBadge": "For sale",
+    "rentBadge": "For rent",
+    "featuredBadge": "Featured",
+    "bedrooms": "Beds",
+    "bathrooms": "Baths",
+    "area": "Area",
+    "areaUnit": "m²",
+    "viewProperty": "View details",
+    "contactAgent": "Contact owner",
+    "priceInUsd": "≈ ${price}"
+  },
+  "addCta": {
+    "title": "Put your property in front of thousands of searchers",
+    "subtitle": "Create your listing free in two minutes — in Arabic or English, with zero commission.",
+    "button": "List your property free",
+    "steps": ["Create your account", "Add your property photos", "Publish and receive leads"]
+  },
+  "market": {
+    "title": "Market stats",
+    "subtitle": "Trusted data from open government sources to help you make a smarter decision",
+    "comingSoon": "Coming soon",
+    "cards": {
+      "libya": {
+        "title": "Libya market",
+        "desc": "Average property prices in Tripoli, Benghazi and Misrata"
+      },
+      "mena": {
+        "title": "Middle East",
+        "desc": "Price-per-sqm comparison across the region's capitals"
+      },
+      "global": {
+        "title": "Global markets",
+        "desc": "UK, US and France indicators from official registries"
+      }
+    }
+  },
+  "currency": {
+    "title": "Today's exchange rates",
+    "subtitle": "Convert any property price to your local currency — Libyan dinar, USD, EUR and more",
+    "usd": "US Dollar",
+    "eur": "Euro",
+    "egp": "Egyptian Pound",
+    "aed": "UAE Dirham",
+    "sar": "Saudi Riyal",
+    "try": "Turkish Lira",
+    "usdToLyd": "USD to Libyan Dinar"
+  },
+  "partners": {
+    "title": "Trusted by brokers and real estate developers",
+    "names": ["Al-Waha Realty", "Skyline", "Benina Group", "Al-Mutawassit Development", "Dar Al-Omran", "Zahrat Al-Mutawassit", "Al-Mimar Realty", "Burj Al-Salam"]
+  },
+  "footer": {
+    "desc": "A bilingual property platform starting from Libya and spanning the Middle East and the world. Our mission is to make property search easier and more transparent for everyone.",
+    "quickLinks": "Quick links",
+    "browse": "Browse",
+    "company": "Company",
+    "buy": "Properties for sale",
+    "rent": "Properties for rent",
+    "marketStats": "Market stats",
+    "currency": "Exchange rates",
+    "about": "About us",
+    "contact": "Contact",
+    "privacy": "Privacy policy",
+    "terms": "Terms & conditions",
+    "rights": "All rights reserved.",
+    "countries": "Libya · Egypt · UAE · Tunisia · Morocco · Saudi Arabia"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "desc": "Sorry, the page you are looking for does not exist.",
+    "back": "Back to home"
+  },
+  "placeholder": {
+    "soon": "Coming soon — under development",
+    "back": "Back to home",
+    "propertiesDesc": "Soon you will be able to browse thousands of properties across Libya and the Middle East with advanced search filters.",
+    "marketDesc": "Soon we will display property price indicators from open government sources across Libya, the region and the world.",
+    "currencyDesc": "A full currency converter with daily-updated rates is coming soon.",
+    "addListingDesc": "The listing form is being prepared — soon you will be able to publish your ad for free in minutes.",
+    "propertyTitle": "Property details",
+    "propertyDesc": "The property details page is being prepared — it will show photos, specs, a map and contact information.",
+    "aboutDesc": "Learn about our vision and story soon.",
+    "contactDesc": "The contact page is being prepared.",
+    "legalDesc": "The legal document is being prepared."
+  }
+}
