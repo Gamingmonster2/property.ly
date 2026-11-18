@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Building2, Menu, Plus } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -62,7 +62,9 @@ export function SiteHeader() {
         {/* Actions */}
         <div className="flex items-center gap-1.5">
           <ThemeToggle />
-          <LocaleSwitcher />
+          <Suspense fallback={<span className="hidden h-7 w-16 sm:block" />}>
+            <LocaleSwitcher />
+          </Suspense>
           <Button
             size="sm"
             className="hidden gap-2 sm:inline-flex"

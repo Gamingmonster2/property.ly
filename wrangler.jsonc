@@ -24,6 +24,13 @@
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
 	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "property-ly-db",
+			"database_id": "509aa13e-5b65-43f5-80c0-73acb73ad561"
+		}
+	],
 	"routes": [
 		{ "pattern": "property.ly", "custom_domain": true },
 		{ "pattern": "www.property.ly", "custom_domain": true }

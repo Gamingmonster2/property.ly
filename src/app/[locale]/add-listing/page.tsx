@@ -1,12 +1,14 @@
-import { getTranslations } from "next-intl/server";
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { Suspense } from "react";
+import { AddListingForm } from "@/components/add-listing-form";
 
-export default async function AddListingPage() {
-  const t = await getTranslations();
+export default function AddListingPage() {
   return (
-    <PlaceholderPage
-      title={t("nav.addListing")}
-      description={t("placeholder.addListingDesc")}
-    />
+    <Suspense
+      fallback={
+        <div className="mx-auto min-h-[60vh] w-full max-w-3xl px-4 py-12" />
+      }
+    >
+      <AddListingForm />
+    </Suspense>
   );
 }

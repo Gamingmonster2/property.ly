@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   // cross-request promise resolution which Cloudflare workerd does not allow.
   // Disabled so the app runs on Cloudflare Workers via OpenNext.
   images: {
+    // Next's image optimizer doesn't run on Cloudflare Workers; our stored
+    // images are pre-compressed webp (~40KB), so serve them unoptimized.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
