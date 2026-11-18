@@ -96,7 +96,7 @@ export async function POST(request: Request) {
            price, currency, usd_price, area_sqm, bedrooms, bathrooms,
            city_key, city_ar, city_en, neighborhood_ar, neighborhood_en,
            country_ar, country_en, phone, status)
-         VALUES (?, 'user', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')`
+         VALUES (?, 'user', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')`
       )
       .bind(
         slug,
@@ -120,7 +120,8 @@ export async function POST(request: Request) {
         district,
         district,
         country.ar,
-        country.en
+        country.en,
+        phone
       )
       .run();
   } catch (e) {
