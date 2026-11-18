@@ -1,43 +1,22 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-
-// Hydration-safe "has mounted" flag without setState-in-effect
-const emptySubscribe = () => () => {};
-
-function useMounted() {
-  return useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
-  );
-}
+import { useTheme } from "@/components/theme-provider";
 
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  const mounted = useMounted();
-
-  const isDark = resolvedTheme === "dark";
+  const { toggle } = useTheme();
 
   return (
     <Button
       variant="ghost"
       size="icon"
       aria-label="Toggle theme"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={toggle}
     >
-      {mounted ? (
-        isDark ? (
-          <Sun className="size-5" />
-        ) : (
-          <Moon className="size-5" />
-        )
-      ) : (
-        <span className="size-5" />
-      )}
+      {/* CSS-driven via the `dark` class on <html> — no hydration mismatch */}
+      <Sun className="size-5 dark:hidden" />
+      <Moon className="hidden size-5 dark:block" />
     </Button>
   );
 }

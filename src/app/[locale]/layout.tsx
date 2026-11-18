@@ -27,10 +27,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// The theme provider reads runtime data (theme cookie) during prerender,
-// so this layout is allowed to block instead of requiring instant UI.
-export const instant = false;
-
 export async function generateMetadata({
   params,
 }: LayoutProps<"/[locale]">): Promise<Metadata> {
@@ -46,6 +42,11 @@ export async function generateMetadata({
         : "A bilingual real estate platform for sale and rent across Libya and the Middle East",
   };
 }
+
+// Applies the saved (or system) theme before paint to avoid a flash.
+// Plain JS on purpose: framework-injected scripts can break in worker
+// bundlers, and this runs before hydration anyway.
+const themeInitScript = `(function(){try{var t=localStorage.getItem("property-theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
 
 export default async function LocaleLayout({
   children,
@@ -68,13 +69,11 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${cairo.variable} ${inter.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="flex min-h-full flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <NextIntlClientProvider>
             <TooltipProvider delay={200}>
               <SiteHeader />

@@ -10,7 +10,7 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { ShineBorder } from "@/components/ui/shine-border";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { properties, type SeedProperty } from "@/data/properties";
-import { formatPrice } from "@/lib/format";
+import { formatNumber, formatPrice } from "@/lib/format";
 
 function PropertyCard({
   property,
@@ -115,7 +115,7 @@ function PropertyCard({
               </p>
               <p className="text-[11px] text-muted-foreground">
                 {t("priceInUsd", {
-                  price: formatPrice(property.usdPrice, "USD", locale),
+                  price: formatNumber(property.usdPrice, locale),
                 })}
               </p>
             </div>
