@@ -33,6 +33,14 @@
 	],
 	"routes": [
 		{ "pattern": "property.ly", "custom_domain": true },
-		{ "pattern": "www.property.ly", "custom_domain": true }
+		{ "pattern": "www.property.ly", "custom_domain": true },
+		{ "pattern": "explore.ly", "custom_domain": true },
+		{ "pattern": "www.explore.ly", "custom_domain": true },
+		{ "pattern": "hotel.com.ly", "custom_domain": true },
+		{ "pattern": "www.hotel.com.ly", "custom_domain": true },
+		{ "pattern": "market.com.ly", "custom_domain": true },
+		{ "pattern": "www.market.com.ly", "custom_domain": true },
+		{ "pattern": "order.com.ly", "custom_domain": true },
+		{ "pattern": "www.order.com.ly", "custom_domain": true }
 	]
 }
