@@ -14,8 +14,7 @@ function mapRow(
   row: ListingRow,
   image: ImageRow | null,
   isAr: boolean
-): ListingCard {
-  const fallbackTitleEn =
+): ListingCard {  const fallbackTitleEn =
     row.title_en ||
     `${row.type_en ?? "Property"}${row.city_en ? ` · ${row.city_en}` : ""}`;
   return {
@@ -48,6 +47,17 @@ function mapRow(
     neighborhoodAr: row.neighborhood_ar ?? undefined,
     neighborhoodEn: row.neighborhood_en ?? undefined,
   };
+}
+
+/**
+ * Public row mapper for pages that query listings directly
+ * (e.g. the logged-in user's own listings).
+ */
+export function mapListingRow(
+  row: ListingRow,
+  image: ImageRow | null
+): ListingCard {
+  return mapRow(row, image, true);
 }
 
 export async function getListings(

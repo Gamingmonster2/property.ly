@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { AuthMenu } from "@/components/auth-menu";
 
 const navItems = [
   { key: "home", href: "/" },
@@ -66,6 +67,7 @@ export function SiteHeader() {
           <Suspense fallback={<span className="hidden h-7 w-16 sm:block" />}>
             <LocaleSwitcher />
           </Suspense>
+          <AuthMenu />
           <Button
             size="sm"
             className="hidden gap-2 sm:inline-flex"
@@ -100,6 +102,15 @@ export function SiteHeader() {
                     {t(`nav.${item.key}`)}
                   </Button>
                 ))}
+                <Button
+                  variant="ghost"
+                  className="justify-start text-base"
+                  onClick={() => setOpen(false)}
+                  nativeButton={false}
+                  render={<Link href="/my-listings" />}
+                >
+                  {t("auth.myListings")}
+                </Button>
                 <Button
                   className="mt-4 gap-2"
                   onClick={() => setOpen(false)}

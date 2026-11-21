@@ -1,0 +1,24 @@
+name: Refresh listings (daily)
+
+on:
+  schedule:
+    # Every 12 hours (04:00 and 16:00 UTC) — fresh listings at least once a day
+    - cron: "0 4,16 * * *"
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Scrape & ingest latest listings
+        run: node scripts/scrape-opensooq.mjs 150
+        env:
+          ADMIN_INGEST_KEY: ${{ secrets.ADMIN_INGEST_KEY }}
+          INGEST_URL: https://property.ly/api/admin/ingest

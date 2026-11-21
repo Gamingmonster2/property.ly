@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { getDB } from "@/lib/db";
 import { getCity, getCityCountry } from "@/data/cities";
 import { convertToUsd } from "@/lib/format";
+import { SESSION_COOKIE, verifySessionToken } from "@/lib/auth";
 
 const PURPOSES = ["sale", "rent"];
 const TYPES = [
@@ -87,6 +89,12 @@ export async function POST(request: Request) {
   const country = getCityCountry(city.key);
   const slug = `u-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 
+  // Optional: link the listing to a signed-in user
+  const cookieStore = await cookies();
+  const userId = await verifySessionToken(
+    cookieStore.get(SESSION_COOKIE)?.value
+  );
+
   try {
     await db
       .prepare(
@@ -95,8 +103,8 @@ export async function POST(request: Request) {
            title_ar, title_en, description_ar, description_en,
            price, currency, usd_price, area_sqm, bedrooms, bathrooms,
            city_key, city_ar, city_en, neighborhood_ar, neighborhood_en,
-           country_ar, country_en, phone, status)
-         VALUES (?, 'user', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')`
+           country_ar, country_en, phone, user_id, status)
+         VALUES (?, 'user', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')`
       )
       .bind(
         slug,
@@ -121,7 +129,8 @@ export async function POST(request: Request) {
         district,
         country.ar,
         country.en,
-        phone
+        phone,
+        userId
       )
       .run();
   } catch (e) {
