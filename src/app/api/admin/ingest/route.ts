@@ -38,12 +38,31 @@ function pick<T>(value: T | undefined | null, fallback: T): T {
 
 // Private ingest endpoint used by the scraper (scripts/scrape-opensooq.mjs).
 // Requires the X-Admin-Key header matching the ADMIN_INGEST_KEY secret.
-export async function POST(request: Request) {
+
+async function isAuthorized(request: Request): Promise<boolean> {
   const { env } = await getCloudflareContext({ async: true });
   const expectedKey = env.ADMIN_INGEST_KEY;
   const providedKey = request.headers.get("x-admin-key");
+  return Boolean(expectedKey && providedKey === expectedKey);
+}
 
-  if (!expectedKey || providedKey !== expectedKey) {
+// Lists active listings (id + external_id + source_url) for enrichment jobs.
+export async function GET(request: Request) {
+  if (!(await isAuthorized(request))) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+  const db = await getDB();
+  if (!db) {
+    return NextResponse.json({ error: "database_unavailable" }, { status: 503 });
+  }
+  const { results } = await db
+    .prepare("SELECT * FROM listings WHERE status='active' ORDER BY id")
+    .all();
+  return NextResponse.json({ listings: results });
+}
+
+export async function POST(request: Request) {
+  if (!(await isAuthorized(request))) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
@@ -158,17 +177,19 @@ export async function POST(request: Request) {
         inserted++;
       }
 
-      // Fetch and store a few images (worker-side fetch avoids hotlinking)
+      // Fetch and store images (worker-side fetch avoids hotlinking),
+      // topping up until the listing reaches MAX_IMAGES_PER_LISTING.
       if (listingId && Array.isArray(item.image_urls)) {
         const existingImages = await db
           .prepare("SELECT COUNT(*) AS c FROM images WHERE listing_id = ?")
           .bind(listingId)
           .first<{ c: number }>();
-        if ((existingImages?.c ?? 0) === 0) {
+        const existingCount = existingImages?.c ?? 0;
+        if (existingCount < MAX_IMAGES_PER_LISTING) {
           const urls = item.image_urls
             .filter((u) => typeof u === "string" && u.startsWith("https://"))
-            .slice(0, MAX_IMAGES_PER_LISTING);
-          let position = 0;
+            .slice(0, MAX_IMAGES_PER_LISTING - existingCount);
+          let position = existingCount;
           for (const url of urls) {
             try {
               const imgRes = await fetch(url, {

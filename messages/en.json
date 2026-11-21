@@ -12,6 +12,7 @@
     "home": "Home",
     "buy": "For Sale",
     "rent": "For Rent",
+    "blog": "Blog",
     "marketStats": "Market Stats",
     "currency": "Exchange Rates",
     "agents": "Agents",
@@ -118,6 +119,12 @@
     "title": "Trusted by brokers and real estate developers",
     "names": ["Al-Waha Realty", "Skyline", "Benina Group", "Al-Mutawassit Development", "Dar Al-Omran", "Zahrat Al-Mutawassit", "Al-Mimar Realty", "Burj Al-Salam"]
   },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Practical articles and guides on property, investment and living across the Middle East",
+    "readingTime": "min read",
+    "back": "Back to blog"
+  },
   "footer": {
     "desc": "A bilingual property platform starting from Libya and spanning the Middle East and the world. Our mission is to make property search easier and more transparent for everyone.",
     "quickLinks": "Quick links",
@@ -220,5 +227,4 @@
     "errorDesc": "Please check the required fields and try again.",
     "required": "Required field"
   }
-}
 }

@@ -18,6 +18,7 @@ const navItems = [
   { key: "home", href: "/" },
   { key: "buy", href: "/properties?purpose=sale" },
   { key: "rent", href: "/properties?purpose=rent" },
+  { key: "blog", href: "/blog" },
   { key: "marketStats", href: "/market-stats" },
   { key: "currency", href: "/currency" },
 ] as const;

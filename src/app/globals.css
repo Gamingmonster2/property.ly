@@ -103,6 +103,22 @@
       transform: translateZ(0) rotate(360deg);
     }
   }
+  --animate-shiny-text: shiny-text 8s infinite
+;
+  @keyframes shiny-text {
+  0%, 90%, 100% {
+    background-position: calc(-100% - var(--shiny-width)) 0;}
+  30%, 60% {
+    background-position: calc(100% + var(--shiny-width)) 0;}}
+  --animate-glass-shine: glass-shine 1.4s ease-in-out infinite;
+  @keyframes glass-shine {
+    0% {
+      transform: translateX(-180%) skewX(-18deg);
+    }
+    100% {
+      transform: translateX(340%) skewX(-18deg);
+    }
+  }
 }
 
 /* Font selection per locale */
